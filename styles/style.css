@@ -1,0 +1,367 @@
+*{
+    box-sizing: border-box
+}
+
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+main{
+    position: relative;
+    top: 50px;
+}
+
+.icon-main{
+    text-align: center;
+    color: rgb(101, 117, 144);
+}
+
+/* HEADER */
+
+.header-inner{
+    height: 600px;;
+    transform: translate3d(0,0,0);
+}
+
+.header-item{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.image-1{
+    background-image: url('../pictures/home.jpg');
+}
+
+.image-2{
+    background-image: url('../pictures/tubes.jpg');
+}
+
+.header-cover{
+    position: absolute;
+    height: 600px;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    background-color: rgba(0,0,0,0.3);
+    padding-top: 100px;
+    text-align: center;
+    color: rgb(248, 249, 250);
+    z-index: 100;
+}
+
+@media only screen and (max-width: 768px){  
+    .header-cover{
+        padding-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 768px){  
+    #display-text {
+        padding-top: 20px;
+        font-size: 50px;
+    }
+}
+
+.header-cover > i{
+    color: rgb(248, 249, 250);
+}
+
+/*CARD-4*/
+
+.main-card{
+   /* border: 2px solid red; */
+    background-color: rgb(248, 249, 250);
+    height: 540px;
+}
+
+#icon{
+    /*border: 2px solid blue;*/
+    height: 180px;
+    position: relative;
+    top: 10px;
+}
+
+#card-title{
+    color: #37474F;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#card-text{
+    color: #37474F;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+.card-button{
+    background-color: rgb(248, 249, 250);
+    border: 1px solid #37474F;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 22px;
+    cursor: pointer;
+    height: 70px;
+    border-radius: 5px;
+    color: #37474F;
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    transform: translate(-50%, 90%);
+}
+
+.card-button:hover{
+    background-color: #e0e0e0;
+}
+
+.card-button:focus{
+    outline: none;
+}
+
+/*FOOTER*/
+
+#footer-left{
+    background-color: #f0f0f0;
+    height: 420px;
+    position: relative;
+    border-right: 3px solid #c2c2c2;
+}
+
+@media only screen and (max-width: 768px){
+    #footer-left{
+        border-bottom: 3px solid #c2c2c2;
+        border-right: none;
+    }
+
+    #list-links{
+        font-size: 17px !important;
+    }
+}
+
+#footer-right{
+    background-color: #f0f0f0;
+    height: 420px;
+    position: relative;
+}
+
+#footer-text{
+    text-align: center; 
+    color:#37474F;
+    font-size: 26px;
+    padding-top: 50px;
+}
+
+#list-links{
+    color: #37474F;
+    font-size: 20px;
+    text-align: justify;
+    list-style-position: inside;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+
+a:link{
+    color: #37474F;
+}
+
+a:hover{
+    color: #90A4AE;
+    text-decoration: none;
+}
+
+a:visited{
+    color: #90A4AE;
+    text-decoration: none;
+}
+
+#tb-follow{
+    border-collapse: collapse;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+#end{
+    background-color: rgb(248, 249, 250);
+    height: 100px;
+    width: 100%;
+
+}
+
+#centered{
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#end_text{
+    text-align: center; 
+    color:#37474F;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+/*FOOD*/
+
+.image-3{
+    background-image: url('../pictures/organic.jpeg');
+}
+
+#main-collapse{
+    position: relative;
+    width: 100%;
+    top: 50px;
+    /* border: 2px solid red; */
+    background-color: whitesmoke;
+    padding: 0px !important;
+}
+
+.text-collapse{
+    display: none;
+    /* height: 200px; */
+    margin-top: 10px;
+    /* border: 2px solid blue; */
+    background-color:whitesmoke;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.collapse-button{
+    width: 100%;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer; 
+}
+
+.collapse-button:focus{
+    outline: none !important;
+    border: 0;
+}
+
+@media only screen and (max-width: 768px){
+    .collapse-button{
+        font-size: 20px;
+    }
+}
+
+#calculate{
+    border: 1px solid rgb(162, 162, 162);
+    border-radius: 5px;
+    background-color: whitesmoke;
+    height: 50px;
+}
+
+#calculate:focus{
+    outline: none !important;
+}
+
+#display{
+    display: none;
+}
+
+@media only screen and (max-width: 768px){
+    #table-bmi{
+        display: none;
+    }
+
+    #display{
+        display: inline;
+    }
+}
+
+/*OVERVIEW*/
+
+.image-4{
+    background-image: url('../pictures/overview.jpg');
+}
+
+@media only screen and (max-width: 768px){  
+    #display-text-user {
+        padding-top: 20px;
+        font-size: 50px;
+    }
+}
+
+#table-patient{
+    position: relative;
+}
+
+#btn-diagnosis{
+    position: relative;
+    left: 43%;
+}
+
+@media only screen and (max-width: 992px){
+    #btn-diagnosis{
+        width: 100%;
+        position: relative;
+        left: 0px;
+    }
+}
+
+/*CARDBOARD*/
+
+.image-5{
+    background-image: url('../pictures/cardboard.jpg');
+}
+
+#diagnosis{
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
+/*MODAL*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Add Animation */
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: rgb(101, 117, 144);
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    font-size: 20px;
+}

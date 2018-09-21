@@ -1,0 +1,39 @@
+<header class="header-inner">
+    <div class="header-item image-4"></div>
+<div class="header-cover">
+    <i class="fas fa-capsules fa-7x"></i>
+    <h1 id="display-text" class="display-2">Pregled pacijenata</h1>
+    <h2 id="display-text-user" class="display-2"></h2>
+</div>
+</header>
+
+<div class="container-fluid" style="position: relative; margin-bottom: 10px; top: 10px">
+    <div class="row justify-content-left">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <table id="table-patient" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Ime</th>
+                        <th>Dijagnoza</th>
+                        <th>Karakteristike</th>
+                      </tr>
+                    </thead>
+                    <tbody id="all-patient">
+                    </tbody>
+                  </table>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <p style="text-align: center; font-size: 18px;">Pacijent</p>
+            <select id="option-name" class="form-control"></select>
+            <br>
+            <ul id="karakteristic">
+            </ul>
+            <p style="text-align: center; font-size: 18px;">Ukoliko pacijent nema dijagnozu, unesite na polje ispod!</p>
+            <textarea class="form-control" rows="5" cols="50" id="diagnosis"></textarea>
+            <br>
+            <button type="subit" id="btn-diagnosis" class="btn btn-primary">Postavi</button>
+        </div>
+    </div>
+</div>
+
+<script src="scripts/overview_patient.js"></script>    

@@ -1,0 +1,195 @@
+<a class="navbar-brand nav-link" href="#" data-page="home">eStetoskop</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-page="food">Pravilna ishrana</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-page="lab">Laboratorija</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav float-right">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#" id="logout-btn">Logout</a>
+                <a class="dropdown-item" href="#" id="about-btn">Važno o meni</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="about" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Važno o meni</h2>
+        </div>
+        <div class="modal-body">
+            Da li imate alergiju?
+            <br>
+            <div class="form-check form-check-inline check-alergic">
+                <input class="form-check-input" type="radio" name="alergic" id="alergic-yes" value="da">Da
+            </div>
+            <div class="form-check form-check-inline check-alergic">
+                <input class="form-check-input" type="radio" name="alergic" id="alergic-no" value="ne">Ne
+            </div>
+            <br>
+            <textarea class="form-control" rows="5" cols="50" id="area-alergic" placeholder="Napišite na šta ste alergični"></textarea>
+            <br>
+            Napišite koje lekove upotrebljavate:
+            <br>
+            <textarea class="form-control" rows="5" cols="50" id="area-medicament"></textarea>
+            <br>
+            Da li imate hronično oboljenje?
+            <br>
+            <div class="form-check form-check-inline check-hrono">
+                <input class="form-check-input" type="radio" name="hrono" id="hrono-yes" value="da">Da
+            </div>
+            <div class="form-check form-check-inline check-hrono">
+                <input class="form-check-input" type="radio" name="hrono" id="hrono-no" value="ne">Ne
+            </div>
+            <br>
+            <input class="form-control" type="text" id="input-hrono" placeholder="Napišite koje je oboljenje">
+            <br>
+            Da li ste imali neku operaciju?
+            <br>
+            <div class="form-check form-check-inline check-operation">
+                <input class="form-check-input" type="radio" name="operation" id="operation-yes" value="da">Da
+            </div>
+            <div class="form-check form-check-inline check-operation">
+                <input class="form-check-input" type="radio" name="operation" id="operation-no" value="ne">Ne
+            </div>
+            <br>
+            <input class="form-control" type="text" id="input-operation" placeholder="Napišite koju ste imali:">
+            <br>
+            <button type="button" class="btn btn-primary" id="ok">Potvrdi</button>
+            <button type="button" class="btn btn-secondary" id="close">Zatvori</button>
+            <br>
+        </div>
+      </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var user = getUser();
+        $('#navbarDropdown').html(user.name);
+    })
+
+    $('#logout-btn').click(function () {
+        logout();
+        $('main').load('views/login.html');
+    })
+
+    $('#about-btn').click(function () {
+        $("#about").show();
+
+        $("#area-alergic").hide();
+        $("#input-hrono").hide();
+        $("#input-operation").hide();
+
+
+        $(".check-alergic").click(function(){
+            var alergic = $("#alergic-yes").is(":checked");
+            if(alergic){
+                $("#area-alergic").show();
+                $("#area-alergic").text("");
+            }else{
+                $("#area-alergic").hide();
+                $("#area-alergic").text("Nema alergije!");
+            }
+        });
+
+
+        $(".check-hrono").click(function(){
+            var hrono = $("#hrono-yes").is(":checked");
+            if(!hrono){
+                $("#input-hrono").hide();
+                $("#input-hrono").val("Nema hronicna oboljenja!");
+            }else{
+                $("#input-hrono").show();
+                $("#input-hrono").val("");
+            }
+        })
+
+        $(".check-operation").click(function(){
+            var operation = $("#operation-yes").is(":checked");
+            if(!operation){
+                $("#input-operation").hide();
+                $("#input-operation").val("Nema operacije!");
+            }else{
+                $("#input-operation").show();
+                $("#input-operation").val("");
+            }
+        })
+
+        $("#ok").click(function(){
+
+            var id = getUser().id;
+
+            var area_alergic = $("#area-alergic").val();
+            if(area_alergic === ""){
+                alert("Niste uneli na sta ste alergicni!");
+                return;
+            }
+
+            var area_medicament = $("#area-medicament").val();
+            if(area_medicament === ""){
+                alert("Niste uneli koje lekove pijete!");
+                return;
+            }
+
+            var input_hrono = $("#input-hrono").val();
+            if(input_hrono === ""){
+                alert("Niste uneli koje koje hronicno oboljenje imate!");
+                return;
+            }
+
+
+            var input_operation = $("#input-operation").val();
+            if(input_operation === ""){
+                alert("Niste uneli koje ste operacije imali!");
+                return;
+            }
+
+            // console.log(area_alergic);
+            // console.log(area_medicament);
+            // console.log(input_hrono);
+            // console.log(input_operation);
+
+            var postBody = {
+            id: id,
+            alergic: area_alergic,
+            medicament: area_medicament,
+            hrono: input_hrono,
+            operation: input_operation
+        }
+
+        $.post("api/about.php", postBody, function(response){
+            if (response) {
+                alert("Uspešno ste uneli karakteristike!");
+                $("#about").hide();
+            } else {
+                alert("Već ste uneli potrebne karakteristike!");
+            }
+        })
+
+        })
+
+        $("#close").click(function(){
+            $("#about").hide();
+        })
+    })
+
+
+
+    $('.nav-link').click(function () {
+        var page = $(this).attr('data-page');
+        if (!page) {
+            return;
+        }
+        $('#content').load('views/' + page + '.html')
+    })
+</script>
